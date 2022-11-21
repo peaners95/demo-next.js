@@ -27,6 +27,12 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Build and push to Docker GitHub
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: peaners95/demo-next.js:latest, peaners95/demo-next.js:${{ github.run_number }}
   release-project:
     name: Release project
     runs-on: ubuntu-latest
