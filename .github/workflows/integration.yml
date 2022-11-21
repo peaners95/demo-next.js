@@ -27,3 +27,7 @@ jobs:
         name: static-site
     - name: Test download
       run: ls -R
+    - name: Archive content
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: site.zip
