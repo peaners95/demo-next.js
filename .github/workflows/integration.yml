@@ -73,7 +73,7 @@ jobs:
       run: |
         export SHELL=/bin/bash
         eval $(minikube -p minikube docker-env)
-        docker build -f ./Dockerfile -t https://github.com/peaners95/demo-next.js/blob/main/Dockerfile .
+        docker build -f ./Dockerfile -t https://hub.docker.com/repository/docker/peaners95/demo-next.js .
         echo -n "verifying images:"
         docker images        
     - name: Deploy to minikube
