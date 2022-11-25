@@ -1,8 +1,8 @@
 name: Build Next.js web app
 
 on: 
-  - push
-  - pull-request
+  push
+  
 jobs:
   build-project:
     name: Build project
@@ -77,21 +77,3 @@ jobs:
         asset_path: ./site.zip
         asset_name: site-v${{ github.run_number }}.zip
         asset_content_type: application/zip
-    - name: Try the cluster !
-      run: kubectl get pods -A
-    - name: Build image
-      run: |
-        export SHELL=/bin/bash
-        eval $(minikube -p minikube docker-env)
-        docker build -f ./Dockerfile -t local/example .
-        echo -n "verifying images:"
-        docker images        
-    - name: Deploy to minikube
-      run:
-        kubectl apply -f deploy-to-minikube.yaml
-    - name: Test service URLs
-      run: |
-        minikube service list
-        minikube service example --url
-        echo "------------------opening the service------------------"
-        curl $(minikube service example --url)
