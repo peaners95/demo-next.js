@@ -1,8 +1,8 @@
 name: Build Next.js web app
 
 on: 
-  push
-  pull-request
+  - push
+  - pull-request
 jobs:
   build-project:
     name: Build project
